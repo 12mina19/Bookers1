@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WebCampBackendNew</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %> errors prohibited this book from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+
+
+
+    <%= flash[:complete] %>
+
+    <p>
+      <strong>Title:</strong><%= @book.title %>
+    </p>
+
+    <p>
+      <strong>Body:</strong><%= @book.body %>
+    </p>
+
+    <span>
+      <%= link_to 'Edit', edit_book_path(@book.id) %>
+    </span>
+     | 
+    <span>
+      <%= link_to 'Back', books_path %>
+    </span>
+
+  </body>
+</html>
